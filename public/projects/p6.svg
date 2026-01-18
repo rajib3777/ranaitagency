@@ -1,0 +1,23 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+<defs>
+  <linearGradient id='g6' x1='0' y1='0' x2='1200' y2='800' gradientUnits='userSpaceOnUse'>
+    <stop stop-color='rgb(242,78,214)'/>
+    <stop offset='0.5' stop-color='rgb(127,214,123)'/>
+    <stop offset='1' stop-color='rgb(123,95,78)'/>
+  </linearGradient>
+  <filter id='blur6' x='-20%' y='-20%' width='140%' height='140%'>
+    <feGaussianBlur stdDeviation='18'/>
+  </filter>
+</defs>
+<rect width='1200' height='800' fill='rgb(10,10,22)'/>
+<rect x='40' y='40' width='1120' height='720' rx='36' fill='url(#g6)' opacity='0.95'/>
+<g opacity='0.35' filter='url(#blur6)'>
+  <circle cx='280' cy='220' r='170' fill='white'/>
+  <circle cx='940' cy='560' r='220' fill='white'/>
+</g>
+<rect x='90' y='110' width='520' height='22' rx='11' fill='rgba(255,255,255,0.85)'/>
+<rect x='90' y='150' width='380' height='14' rx='7' fill='rgba(255,255,255,0.65)'/>
+<rect x='90' y='190' width='260' height='14' rx='7' fill='rgba(255,255,255,0.55)'/>
+<rect x='90' y='610' width='220' height='56' rx='18' fill='rgba(255,255,255,0.85)'/>
+<rect x='330' y='610' width='160' height='56' rx='18' fill='rgba(255,255,255,0.35)'/>
+</svg>

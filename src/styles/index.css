@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  color-scheme: dark;
+}
+
+html, body {
+  height: 100%;
+}
+
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Arial;
+  background: radial-gradient(1200px 600px at 30% 15%, rgba(140, 120, 255, 0.35), transparent 60%),
+              radial-gradient(1000px 700px at 70% 20%, rgba(90, 120, 255, 0.30), transparent 60%),
+              radial-gradient(900px 700px at 60% 90%, rgba(255, 120, 220, 0.18), transparent 60%),
+              linear-gradient(180deg, #050510 0%, #070817 45%, #04040c 100%);
+  overflow-x: hidden;
+}
+
+/* subtle vertical stripe overlay */
+.bg-stripes::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.06) 0px,
+    rgba(255,255,255,0.06) 1px,
+    rgba(255,255,255,0.00) 8px,
+    rgba(255,255,255,0.00) 12px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.12;
+}
+
+
+.shimmer-border{
+  position: relative;
+}
+.shimmer-border::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  background: conic-gradient(from 180deg,
+    rgba(255,255,255,0.0),
+    rgba(162, 130, 255, 0.55),
+    rgba(70, 140, 255, 0.55),
+    rgba(255, 120, 220, 0.45),
+    rgba(255,255,255,0.0)
+  );
+  filter: blur(12px);
+  opacity: 0.55;
+  animation: spin 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes spin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+.noise::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+.focus-ring:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(130, 160, 255, 0.45), 0 0 0 6px rgba(0,0,0,0.8);
+}
+
+
+.glass{
+  background: linear-gradient(180deg, rgba(12,12,26,0.78), rgba(8,8,18,0.62));
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 26px 90px rgba(0,0,0,0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  contain: paint;
+}
+
+.glass-strong{
+  background: linear-gradient(180deg, rgba(16,16,34,0.86), rgba(8,8,18,0.70));
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 38px 120px rgba(0,0,0,0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  contain: paint;
+}
+
+/* Navbar dropdowns must overflow above hero; disable containment only for navbar wrapper */
+.nav-glass{
+  contain: none !important;
+  overflow: visible !important;
+}
+
+/* dropdown clarity helpers */
+.dropdown-panel{
+  background: linear-gradient(180deg, rgba(10,10,24,0.92), rgba(8,8,18,0.86));
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 26px 80px rgba(0,0,0,0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* make uploaded logo appear white and crisp in nav */
+.logo-white{
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
+
+/* --- Perf + mobile stability --- */
+html, body { width: 100%; }
+body { overflow-x: clip; }
+#root { overflow-x: clip; }
+
+/* Render below-the-fold content only when needed (big win for first load, no visual change) */
+.cv-auto{
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+/* Reduce heavy effects on small screens for smoothness */
+@media (max-width: 640px) {
+  .glass, .glass-strong{
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 18px 60px rgba(0,0,0,0.45);
+  }
+  .shimmer-border::before{ opacity: 0.30; filter: blur(10px); }
+}
+
+/* Respect reduced motion to prevent lag on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,22 @@
+<svg width="240" height="64" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="240" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.35" stop-color="#9C7BFF"/>
+      <stop offset="0.7" stop-color="#4BA3FF"/>
+      <stop offset="1" stop-color="#FF7AD9"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M28 50C17 44 10 35 10 24C10 13 19 6 32 6C45 6 54 13 54 24C54 35 47 44 36 50" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M22 30L31 21L40 30L31 39L22 30Z" fill="url(#g)" opacity="0.9"/>
+    <text x="70" y="41" font-family="ui-sans-serif, system-ui, Segoe UI" font-size="22" font-weight="800" fill="url(#g)">Rana IT Agency</text>
+  </g>
+</svg>
